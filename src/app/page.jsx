@@ -3,7 +3,7 @@ import Products from "@/components/Products";
 
 export default async function Home({ searchParams }) {
 
-  const category = searchParams.category;
+  const category = await searchParams.category;
 
   const url = category ? `http://localhost:3000/api/products?category=${category}`
     : "http://localhost:3000/api/products"
@@ -11,7 +11,7 @@ export default async function Home({ searchParams }) {
   const res = await fetch(url);
   const products = await res.json()
 
-
+  console.log('test for products: ', products)
   return (
     <>
       <Hero />

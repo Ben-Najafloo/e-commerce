@@ -1,25 +1,37 @@
+// src/db/mongodb.js
 import mongoose from "mongoose";
 
 const uri = process.env.MONGOURL;
 
 if (!uri) {
-    throw new Error('connection faild..');
+    throw new Error("MongoDB connection string missing in .env");
 }
 
-let isConnected = false;
+let cached = global._mongoose;
+
+if (!cached) {
+    cached = global._mongoose = { conn: null, promise: null };
+}
 
 export async function connectToMongoDB() {
-    if (isConnected) {
-        return console.log('already connected')
+    if (cached.conn) {
+        return cached.conn;
     }
 
-    try {
-        mongoose.connect(uri, { dbName: "shopping" });
-        isConnected = true
-        console.log('connected...tadaa')
-    } catch (error) {
-        console.log(error);
-        process.exit(1
-        )
+    if (!cached.promise) {
+        cached.promise = mongoose
+            .connect(uri, { dbName: "shopping" })
+            .then((mongoose) => {
+                console.log("MongoDB connected... tadaa");
+                return mongoose;
+            })
+            .catch((err) => {
+                cached.promise = null;
+                console.error("MongoDB connection error:", err);
+                throw err;
+            });
     }
-} 
+
+    cached.conn = await cached.promise;
+    return cached.conn;
+}

@@ -1,5 +1,5 @@
 import { connectToMongoDB } from "@/db/mongodb";
-import Products from "@/models/Products";
+import Product from "@/models/Products";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -12,13 +12,10 @@ export async function GET(request) {
         let products;
 
         if (category) {
-            products = await Products.find({ category })
+            products = await Product.find({ category })
         } else {
-            products = await Products.find({})
+            products = await Product.find({})
         }
-
-
-
         return NextResponse.json(products, { status: 200 })
     } catch (error) {
         return NextResponse.json({ error: "no api .." }, { status: 500 })

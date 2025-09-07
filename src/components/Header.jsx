@@ -8,6 +8,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Header = () => {
 
+    const { cart } = useContext(CardContext);
+
     const { data: session } = useSession()
     const [isrender, setIsRender] = useState(false)
     useEffect(
@@ -18,7 +20,7 @@ const Header = () => {
         return null
     }
 
-    const { cart } = useContext(CardContext);
+
     return (
         <div>
             <header className="bg-indigo-500 fixed w-full top-0 z-50">
@@ -33,9 +35,11 @@ const Header = () => {
                         <Link href={`?category=jewelery#products`} className="text-sm/6 ml-7 font-semibold text-white">Jewelery</Link>
                         <Link href={`?category=clothing#products`} className="text-sm/6 ml-7 font-semibold text-white">Clothing</Link>
                     </div>
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end text-white">
+
                         {session ? (
                             <>
+                                <Link href="/dashboard" className='mr-4 cursor-pointer hover:font-bold'>Dashboard</Link>
                                 <div className="text-sm/6 font-semibold text-white">
                                     Hi {session.user.name}
                                 </div>
@@ -46,7 +50,7 @@ const Header = () => {
                         )}
 
 
-                        <Link href="/card" className="flex text-sm/6 font-semibold text-white ml-11">
+                        <Link href="/card" className="flex text-sm/6 font-semibold  ml-11">
                             <SlBasket size="20" />
                             <span className='text-red-500 font-bold ml-1 text-xl'>{cart.length}</span>
                         </Link>
