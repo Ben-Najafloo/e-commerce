@@ -5,8 +5,8 @@ export default async function Home({ searchParams }) {
 
   const category = await searchParams.category;
 
-  const url = category ? `http://localhost:3000/api/products?category=${category}`
-    : "http://localhost:3000/api/products"
+  const url = category ? `${process.env.NEXTAUTH_URL}/api/products?category=${category}`
+    : `${process.env.NEXTAUTH_URL}/api/products`
 
   const res = await fetch(url);
   const products = await res.json()
