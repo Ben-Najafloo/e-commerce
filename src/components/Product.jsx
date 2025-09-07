@@ -5,8 +5,6 @@ import { useContext } from 'react';
 
 const Product = ({ product }) => {
 
-    console.log('products from Product card: ', product)
-
     const { addToCart } = useContext(CardContext);
     return (
         <div className="relative p-2">
