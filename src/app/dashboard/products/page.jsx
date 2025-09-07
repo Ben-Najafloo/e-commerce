@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { MdDelete, MdOutlineAdd } from 'react-icons/md';
 import { CiEdit } from "react-icons/ci";
+import { connectToMongoDB } from "@/db/mongodb";
+import Product from "@/models/Products";
 
 
 export default async function ProductInDashboard() {
+    await connectToMongoDB();
 
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/dashboard/products`);
-    const products = await res.json()
+    // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/dashboard/products`);
+    // const products = await res.json()
+    const products = await Product.find({}).lean();
     return (
         <div>
             <div className=' px-9 pt-2'>
@@ -30,10 +34,7 @@ export default async function ProductInDashboard() {
                         <div className="mt-1">
                             <div className="flow-root">
                                 <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                    <li
-                                        // onMouseEnter={() => { setShowDeleteEditButton(true) }}
-                                        // onMouseLeave={() => { setShowDeleteEditButton(false) }}
-                                        className="flex py-2">
+                                    <li className="flex py-2">
                                         <div className="size-12 shrink-0 overflow-hidden rounded-md border border-gray-200">
                                             <img src={c.image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="size-full object-cover" />
                                         </div>
