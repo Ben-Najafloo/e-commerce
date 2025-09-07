@@ -62,6 +62,10 @@ const Header = () => {
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center">
+                        <Link href="/card" className="flex text-sm/6 font-semibold  mr-2">
+                            <SlBasket size="20" />
+                            <span className='text-red-500 font-bold ml-1 text-xl'>{cart.length}</span>
+                        </Link>
                         <button onClick={toggleMenu} className="text-white focus:outline-none">
                             {isOpen ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
                         </button>
