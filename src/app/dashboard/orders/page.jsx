@@ -1,9 +1,13 @@
+import { connectToMongoDB } from "@/db/mongodb";
 import OrderCard from "./OrderCard";
+import Order from "@/models/Orders";
 
 export default async function OrdersDashboard() {
 
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/dashboard/orders`);
-    const orders = await res.json()
+    await connectToMongoDB()
+    const orders = await Order.find({}).lean();
+    // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/dashboard/orders`);
+    // const orders = await res.json()
     console.log('orders: ', orders)
 
     return (
