@@ -31,11 +31,12 @@ export default function Card() {
         }
 
         try {
-            const res = await fetch(`${process.env.NEXTAUTH_URL}/api/orders`, {
+            const res = await fetch("/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(orderData)
-            })
+                body: JSON.stringify(orderData),
+            });
+
 
             if (res.ok) {
                 alert("order done");
@@ -56,6 +57,7 @@ export default function Card() {
             alert(error)
         }
     }
+
     return (
 
         <div className="flex h-full flex-col overflow-y-auto px-7 pt-24">
