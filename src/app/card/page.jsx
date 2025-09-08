@@ -37,7 +37,6 @@ export default function Card() {
                 body: JSON.stringify(orderData),
             });
 
-
             if (res.ok) {
                 alert("order done");
                 clearCart();
@@ -60,12 +59,12 @@ export default function Card() {
 
     return (
 
-        <div className="flex h-full flex-col overflow-y-auto px-7 pt-24">
+        <div className="flex h-full flex-col overflow-y-auto px-1 lg:px-7 pt-24">
 
-            <div className='flex'>
-                <div className='w-2/3 px-9 pt-2'>
+            <div className='lg:flex'>
+                <div className='lg:w-2/3 lg:px-9 pt-2'>
                     <div className="flex items-start justify-between">
-                        <h2 id="drawer-title" className="text-lg font-medium text-gray-400 mb-2">Shopping cart</h2>
+                        <h2 id="drawer-title" className="text-lg font-medium text-gray-400 mb-2 px-2">Shopping cart</h2>
                     </div>
                     {!cart ? (
                         <div className="mt-8">
@@ -76,12 +75,12 @@ export default function Card() {
                             </div>
                         </div>
                     ) : cart.map((c) => (
-                        <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 border-t border-gray-200">
+                        <div className="flex-1 overflow-y-auto px-2 lg:px-4 py-6 sm:px-6 border-t border-gray-200">
                             <div className="mt-1">
                                 <div className="flow-root">
                                     <ul role="list" className="-my-6 divide-y divide-gray-200">
                                         <li className="flex py-6">
-                                            <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                            <div className="lg:size-24 size-18 shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                 <img src={c.image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="size-full object-cover" />
                                             </div>
 
@@ -129,8 +128,8 @@ export default function Card() {
 
                         <p className="mt-0.5 text-sm text-gray-400">Shipping and taxes calculated at checkout.</p>
                         <div className="flex w-full mt-6">
-                            <div className="w-2/3 mr-3">
-                                <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700">
+                            <div className="lg:w-2/3 mr-3">
+                                <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-2 text-sm  lg:py-3 lg:text-base lg:font-medium text-white shadow-xs hover:bg-indigo-700">
                                     Checkout
                                 </a>
                             </div>
@@ -147,7 +146,7 @@ export default function Card() {
                     </div>
                 </div>
 
-                <div className='w-1/3 px-9 pt-5 bg-gray-100 rounded-2xl'>
+                <div className='lg:w-1/3 px-9 py-5 sm:my-3 bg-gray-100 rounded-2xl'>
                     <div className="flex items-start justify-between">
                         <h2 id="drawer-title" className="text-lg font-medium text-gray-500 mb-2">Your Information</h2>
                     </div>
