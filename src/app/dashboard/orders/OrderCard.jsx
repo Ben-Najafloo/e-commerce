@@ -68,22 +68,22 @@ const OrderCard = ({ orders }) => {
 
                         {/* Header - Always Visible */}
                         <div
-                            className="p-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+                            className="lg:p-4 p-2 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
                             onClick={() => toggleOrder(index)}
                         >
                             <div className="flex items-center justify-between">
                                 <div className="flex-1">
                                     <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center space-x-3">
-                                            <FiPackage className="w-5 h-5 text-blue-500" />
-                                            <span className="font-semibold text-gray-800">
+                                        <div className="flex  space-x-3">
+                                            <FiPackage className="w-5 h-5 text-blue-500 hidden sm:block" />
+                                            <span className="lg:font-semibold lg:text-base text-sm text-gray-800">
                                                 Order #{order._id?.slice(-8) || `ORD-${index + 1}`}
                                             </span>
-                                            <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(order.status)}`}>
+                                            <span className={`px-3 pt-2 rounded-full text-xs font-medium border ${getStatusColor(order.status)}`}>
                                                 {order.status?.toUpperCase() || 'UNKNOWN'}
                                             </span>
                                         </div>
-                                        <span className="text-lg font-bold text-green-600">
+                                        <span className="lg:text-lg lg:font-bold text-green-600 ml-3">
                                             ${order.totalPrice?.toFixed(2) || '0.00'}
                                         </span>
                                     </div>
@@ -95,11 +95,11 @@ const OrderCard = ({ orders }) => {
                                                 <span>{order.user?.user_name || 'Unknown User'}</span>
                                             </div>
                                             <div className="flex items-center space-x-1">
-                                                <FiPackage className="w-4 h-4" />
+                                                <FiPackage className="w-4 h-4 hidden sm:block" />
                                                 <span>{calculateTotalItems(order.cart)} items</span>
                                             </div>
                                             <div className="flex items-center space-x-1">
-                                                <FiCalendar className="w-4 h-4" />
+                                                <FiCalendar className="w-4 h-4 hidden sm:block" />
                                                 <span>{formatDate(order.createAt)}</span>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@ const OrderCard = ({ orders }) => {
                                     transition={{ duration: 0.2 }}
                                     className="ml-4 p-1 hover:bg-gray-200 rounded-full transition-colors"
                                 >
-                                    <BsCaretDownFill className="w-4 h-4 text-gray-500" />
+                                    <BsCaretDownFill className="w-4 h-4 text-gray-500 hidden sm:block" />
                                 </motion.div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@ const OrderCard = ({ orders }) => {
                                                     <span className="font-medium">Free</span>
                                                 </div>
                                                 <hr className="my-2" />
-                                                <div className="flex justify-between text-lg font-bold">
+                                                <div className="flex justify-between lg:text-lg font-bold">
                                                     <span>Total:</span>
                                                     <span className="text-green-600">
                                                         ${(order.totalPrice || 0).toFixed(2)}

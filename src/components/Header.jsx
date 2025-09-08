@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { SlBasket } from "react-icons/sl";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { useSession, signIn, signOut } from 'next-auth/react';
+import './Header.css';
 
 const Header = () => {
 
@@ -44,13 +45,15 @@ const Header = () => {
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end text-white">
                         {session ? (
-                            <>
-                                <Link href="/dashboard" className='mr-4 cursor-pointer hover:font-bold'>Dashboard</Link>
-                                <div className="text-sm/6 font-semibold text-white">
+                            <div className='dropdown'>
+                                <div className="dropbtn text-sm/6 font-semibold text-white cursor-pointer">
                                     Hi {session.user.name}
                                 </div>
-                                <button onClick={() => { signOut() }} className='ml-3 cursor-pointer hover:font-bold'>Sign Out</button>
-                            </>
+                                <div className="dropdown-content">
+                                    <Link href="/dashboard" className='ddcb mr-4 cursor-pointer hover:font-bold'>Dashboard</Link>
+                                    <button onClick={() => { signOut() }} className='ddcb cursor-pointer hover:font-bold'>Sign Out</button>
+                                </div>
+                            </div>
                         ) : (
                             <button onClick={() => { signIn() }} className='cursor-pointer hover:font-bold'>Sign In</button>
                         )}

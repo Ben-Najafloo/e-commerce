@@ -12,7 +12,7 @@ export default async function OrdersDashboard() {
 
     return (
         <div>
-            <div className=' px-9 pt-2'>
+            <div className='px-2 lg:px-9 pt-2'>
                 <div className="flex items-start justify-between">
                     <h2 id="drawer-title" className="text-lg font-medium text-gray-400 mb-2">Orders List</h2>
 

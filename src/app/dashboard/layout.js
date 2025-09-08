@@ -3,7 +3,7 @@ import LeftSider from "@/components/dashboard/LeftSider";
 
 export default function DashboardLayout({ children }) {
     return (
-        <div className="min-h-screen pt-24 bg-gray-50 flex">
+        <div className="min-h-screen pt-24 bg-gray-50 lg:flex xl:flex 2xl:flex">
 
             <LeftSider />
 
