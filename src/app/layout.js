@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { CartProvider } from "./contexts/cardContext";
 import { SessionProvider } from "next-auth/react";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           <CartProvider>
             <Header />
             {children}
+            <Footer />
           </CartProvider>
         </SessionProvider>
       </body>
