@@ -57,7 +57,7 @@ const Page = () => {
 
 
     return (
-        <div className='px-9 pt-2 bg-gray-100 rounded-2xl'>
+        <div className='px-9 pt-2 rounded-2xl'>
             <div className="flex items-start justify-between">
                 <h2 id="drawer-title" className="text-lg font-medium text-gray-500 mb-2">Add new production</h2>
             </div>

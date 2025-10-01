@@ -64,11 +64,11 @@ const OrderCard = ({ orders }) => {
         <div className="pb-2 mb-3 mt-5">
             <div className="space-y-4">
                 {orders?.map((order, index) => (
-                    <div key={order._id || index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <div key={order._id || index} className=" rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
 
                         {/* Header - Always Visible */}
                         <div
-                            className="lg:p-4 p-2 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+                            className="lg:p-4 p-2 cursor-pointer dark:hover:bg-gray-800 hover:bg-gray-100 transition-colors duration-200"
                             onClick={() => toggleOrder(index)}
                         >
                             <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ const OrderCard = ({ orders }) => {
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex  space-x-3">
                                             <FiPackage className="w-5 h-5 text-blue-500 hidden sm:block" />
-                                            <span className="lg:font-semibold lg:text-base text-sm text-gray-800">
+                                            <span className="lg:font-semibold lg:text-base text-sm ">
                                                 Order #{order._id?.slice(-8) || `ORD-${index + 1}`}
                                             </span>
                                             <span className={`px-3 pt-2 rounded-full text-xs font-medium border ${getStatusColor(order.status)}`}>
@@ -88,7 +88,7 @@ const OrderCard = ({ orders }) => {
                                         </span>
                                     </div>
 
-                                    <div className="flex items-center justify-between text-sm text-gray-600">
+                                    <div className="flex items-center justify-between text-sm">
                                         <div className="flex items-center space-x-4">
                                             <div className="flex items-center space-x-1">
                                                 <FiUser className="w-4 h-4" />
@@ -126,39 +126,39 @@ const OrderCard = ({ orders }) => {
                                     exit="collapsed"
                                     className="border-t border-gray-200"
                                 >
-                                    <div className="p-4 space-y-6 bg-gray-50">
+                                    <div className="p-4 space-y-6">
 
                                         {/* Customer Information */}
                                         <div className="p-4 mb-5">
-                                            <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <h4 className="font-800 mb-3 flex items-center">
                                                 <FiUser className="w-5 h-5 mr-2 text-blue-500" />
                                                 Customer Information
                                             </h4>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                                 <div>
-                                                    <span className="font-medium text-gray-600">Name:</span>
-                                                    <p className="text-gray-800">{order.user?.user_name || 'N/A'}</p>
+                                                    <span className="font-medium ">Name:</span>
+                                                    <p className="">{order.user?.user_name || 'N/A'}</p>
                                                 </div>
                                                 <div>
-                                                    <span className="font-medium text-gray-600">Email:</span>
-                                                    <p className="text-gray-800">{order.user?.email || 'N/A'}</p>
+                                                    <span className="font-medium ">Email:</span>
+                                                    <p className="">{order.user?.email || 'N/A'}</p>
                                                 </div>
                                                 <div>
-                                                    <span className="font-medium text-gray-600">Phone:</span>
-                                                    <p className="text-gray-800">{order.user?.phone || 'N/A'}</p>
+                                                    <span className="font-medium ">Phone:</span>
+                                                    <p className="">{order.user?.phone || 'N/A'}</p>
                                                 </div>
                                                 <div>
-                                                    <span className="font-medium text-gray-600">City:</span>
-                                                    <p className="text-gray-800">{order.user?.city || 'N/A'}</p>
+                                                    <span className="font-medium ">City:</span>
+                                                    <p className="">{order.user?.city || 'N/A'}</p>
                                                 </div>
                                             </div>
 
                                             <div className="mt-3">
-                                                <span className="font-medium text-gray-600 flex items-center">
+                                                <span className="font-medium  flex items-center">
                                                     <FiMapPin className="w-4 h-4 mr-1" />
                                                     Address:
                                                 </span>
-                                                <p className="text-gray-800 mt-1">
+                                                <p className=" mt-1">
                                                     {order.user?.address || 'N/A'}
                                                     {order.user?.postal_code && `, ${order.user.postal_code}`}
                                                 </p>
@@ -167,13 +167,13 @@ const OrderCard = ({ orders }) => {
 
                                         {/* Order Items */}
                                         <div className="p-4 mb-5">
-                                            <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <h4 className="font-semibold  mb-3 flex items-center">
                                                 <FiPackage className="w-5 h-5 mr-2 text-green-500" />
                                                 Order Items ({order.cart?.length || 0})
                                             </h4>
                                             <div className="space-y-3">
                                                 {order.cart?.map((item, itemIndex) => (
-                                                    <div key={item._id || itemIndex} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+                                                    <div key={item._id || itemIndex} className="flex items-center space-x-4 p-3  rounded-lg">
                                                         <img
                                                             src={item.image || '/placeholder-image.jpg'}
                                                             alt={item.title || 'Product'}
@@ -183,26 +183,26 @@ const OrderCard = ({ orders }) => {
                                                             }}
                                                         />
                                                         <div className="flex-1 min-w-0">
-                                                            <h5 className="font-medium text-gray-800 truncate">
+                                                            <h5 className="font-medium  truncate">
                                                                 {item.title || 'Unknown Product'}
                                                             </h5>
-                                                            <p className="text-sm text-gray-500 capitalize">
+                                                            <p className="text-sm  capitalize">
                                                                 {item.category || 'Uncategorized'}
                                                             </p>
                                                             {item.rating && (
                                                                 <div className="flex items-center mt-1">
                                                                     <FiStar className="w-4 h-4 text-yellow-400 fill-current" />
-                                                                    <span className="text-sm text-gray-600 ml-1">
+                                                                    <span className="text-sm  ml-1">
                                                                         {item.rating.rate || 'N/A'} ({item.rating.count || 0} reviews)
                                                                     </span>
                                                                 </div>
                                                             )}
                                                         </div>
                                                         <div className="text-right">
-                                                            <div className="font-semibold text-gray-800">
+                                                            <div className="font-semibold ">
                                                                 ${item.price?.toFixed(2) || '0.00'}
                                                             </div>
-                                                            <div className="text-sm text-gray-500">
+                                                            <div className="text-sm ">
                                                                 Qty: {item.quantity || 0}
                                                             </div>
                                                             <div className="text-sm font-medium text-blue-600">
@@ -216,23 +216,23 @@ const OrderCard = ({ orders }) => {
 
                                         {/* Order Summary */}
                                         <div className="p-4 mb-5">
-                                            <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <h4 className="font-semibold  mb-3 flex items-center">
                                                 <FiCreditCard className="w-5 h-5 mr-2 text-purple-500" />
                                                 Order Summary
                                             </h4>
                                             <div className="space-y-2 text-sm">
                                                 <div className="flex justify-between">
-                                                    <span className="text-gray-600">Subtotal:</span>
+                                                    <span className="">Subtotal:</span>
                                                     <span className="font-medium">
                                                         ${(order.totalPrice || 0).toFixed(2)}
                                                     </span>
                                                 </div>
                                                 <div className="flex justify-between">
-                                                    <span className="text-gray-600">Tax:</span>
+                                                    <span className="">Tax:</span>
                                                     <span className="font-medium">$0.00</span>
                                                 </div>
                                                 <div className="flex justify-between">
-                                                    <span className="text-gray-600">Shipping:</span>
+                                                    <span className="">Shipping:</span>
                                                     <span className="font-medium">Free</span>
                                                 </div>
                                                 <hr className="my-2" />
@@ -247,7 +247,7 @@ const OrderCard = ({ orders }) => {
 
                                         {/* Order Timeline */}
                                         <div className="p-4">
-                                            <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                                            <h4 className="font-semibold  mb-3 flex items-center">
                                                 <FiCalendar className="w-5 h-5 mr-2 text-indigo-500" />
                                                 Order Timeline
                                             </h4>
@@ -255,8 +255,8 @@ const OrderCard = ({ orders }) => {
                                                 <div className="flex items-center space-x-3">
                                                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                                     <div>
-                                                        <span className="font-medium text-gray-800">Order Created</span>
-                                                        <p className="text-gray-500">{formatDate(order.createAt)}</p>
+                                                        <span className="font-medium ">Order Created</span>
+                                                        <p className="">{formatDate(order.createAt)}</p>
                                                     </div>
                                                 </div>
                                             </div>

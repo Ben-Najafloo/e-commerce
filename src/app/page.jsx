@@ -2,16 +2,19 @@ import Hero from "@/components/Hero";
 import Products from "@/components/Products";
 
 export default async function Home({ searchParams }) {
+  // Await the entire searchParams object first
+  const params = await searchParams;
+  const category = params.category;
 
-  const category = await searchParams.category;
-
-  const url = category ? `${process.env.NEXTAUTH_URL}/api/products?category=${category}`
+  const url = category
+    ? `${process.env.NEXTAUTH_URL}/api/products?category=${category}`
     : `${process.env.NEXTAUTH_URL}/api/products`
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    cache: 'no-store' // Optional: ensures fresh data on each request
+  });
   const products = await res.json()
 
-  console.log('test for products: ', products)
   return (
     <>
       <Hero />
@@ -24,8 +27,6 @@ export default async function Home({ searchParams }) {
 
         <Products products={products} />
       </div>
-
     </>
-
   );
 }

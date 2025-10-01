@@ -13,10 +13,10 @@
     z-index: 1;
   }
   
-  .dropdown-content .ddcb {
+  /* .dropdown-content .ddcb {
     padding: 12px;
     text-decoration: none;
-    display: block;
-  }
+    /* display: block; 
+  } */
   
-  .dropdown:hover .dropdown-content {display: block;background-color: rgb(23, 14, 118);}
+  .dropdown:hover .dropdown-content {display: block;}

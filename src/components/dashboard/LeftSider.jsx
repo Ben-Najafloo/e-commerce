@@ -17,7 +17,7 @@ const LeftSider = () => {
     const ordersPath = pathname === '/dashboard/orders';
 
     return (
-        <div className="lg:w-64 bg-white shadow-lg border-r border-gray-200 p-4 lg:p-8">
+        <div className="lg:w-64 shadow-lg border-r border-gray-200 p-4 lg:p-8">
 
             <nav className="space-x-3 lg:space-y-3 flex sm:block">
                 <Link

@@ -20,8 +20,8 @@ const Hero = () => {
         visible: {
             opacity: 1,
             transition: {
-                delayChildren: 0.5, // Delay before the first letter starts
-                staggerChildren: 0.05, // Delay between each letter
+                delayChildren: 0.5,
+                staggerChildren: 0.05,
             },
         },
     };
@@ -33,14 +33,14 @@ const Hero = () => {
 
     return (
         <div>
-            <section className="bg-white  pt-48">
+            <section className="pt-48">
                 <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div className="mr-auto place-self-center lg:col-span-7">
                         <motion.p
                             variants={sentence}
                             initial="hidden"
                             animate="visible"
-                            className="max-w-2xl mb-4 text-4xl text-gray-600 tracking-tight leading-none md:text-4xl xl:text-5xl"
+                            className="max-w-2xl mb-4 text-4xl tracking-tight leading-none md:text-4xl xl:text-5xl"
                         >
                             {words.map((word, wordIndex) => (
                                 <span key={wordIndex} className="inline-block">
@@ -55,12 +55,12 @@ const Hero = () => {
                         </motion.p>
 
 
-                        <p className="max-w-2xl mb-6 font-light text-gray-700 lg:mb-8 md:text-lg lg:text-xl">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+                        <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
                         <Link href={`${currentPath}#products`} className="inline-flex mt-2 items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 ">
                             Recent Products
                             <FaArrowDown className="w-5 h-5 ml-2 -mr-1" />
                         </Link>
-                        <Link href="/" className="inline-flex mt-2 items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-gray-100">
+                        <Link href="/" className="inline-flex mt-2 items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-gray-100">
                             Speak to Sales
                             <FaHeadphones className="w-5 h-5 ml-2 -mr-1" />
                         </Link>
