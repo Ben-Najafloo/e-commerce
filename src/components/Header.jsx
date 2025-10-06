@@ -36,8 +36,8 @@ const Header = () => {
             <header className="fixed w-full top-0 z-50 border-b-2 bg-white dark:bg-black">
                 <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-8">
                     <div className="flex lg:flex-1">
-                        <Link href="/" className="-m-1.5 bg-black">
-                            <img src="https://behnam.tech/wp-content/uploads/2025/03/output-onlinepngtools.png" alt="" className="h-11 w-auto" />
+                        <Link href="/" className="-m-1.5 text-3xl hover:text-blue-600 cursor-pointer bg-gradient-to-r from-gray-800 to-blue-800 dark:from-white dark:to-blue-800 text-transparent bg-clip-text">
+                            BEHNAM
                         </Link>
                         <div className='hidden md:flex '>
                             <Link href="/" className="text-sm/6 ml-20 font-semibold ">All</Link>

@@ -4,15 +4,16 @@ import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation';
 import { FaArrowDown, FaHeadphones } from "react-icons/fa6";
-import cassa from '../asset/image/cassa-re.png'
-import Image from 'next/image';
+// import cassa from '../asset/image/cassa-re.png'
+// import Image from 'next/image';
 import { motion } from 'framer-motion';
+import AnimatedLists from './AnimatedLists';
 
 const Hero = () => {
 
     const currentPath = usePathname();
 
-    const title = "This text animation is created with Framer Motion";
+    const title = "This text animation is created with Framer Motion, Shadcn (Magic UI)";
     const words = title.split(" ");
 
     const sentence = {
@@ -33,8 +34,9 @@ const Hero = () => {
 
     return (
         <div>
-            <section className="pt-48">
+            <section className="pt-32">
                 <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+
                     <div className="mr-auto place-self-center lg:col-span-7">
                         <motion.p
                             variants={sentence}
@@ -67,9 +69,11 @@ const Hero = () => {
 
 
                     </div>
+
                     <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                        <Image src={cassa} alt="mockup" />
+                        <AnimatedLists />
                     </div>
+
                 </div>
             </section>
         </div>
