@@ -1,19 +1,24 @@
 "use client"
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { usePathname } from 'next/navigation';
 import { FaArrowDown, FaHeadphones } from "react-icons/fa6";
-// import cassa from '../asset/image/cassa-re.png'
-// import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedLists from './AnimatedLists';
+import { CardContext } from '@/app/contexts/cardContext';
+import data from '../../content/data';
 
 const Hero = () => {
 
     const currentPath = usePathname();
 
-    const title = "This text animation is created with Framer Motion, Shadcn (Magic UI)";
+    const { lang } = useContext(CardContext);
+    const content = lang === "en" ? data[0].en : data[0].it;
+    const subtitle = content.subtitle;
+    const button1 = content.button1;
+    const button2 = content.button2;
+    const title = content.title;
     const words = title.split(" ");
 
     const sentence = {
@@ -57,13 +62,13 @@ const Hero = () => {
                         </motion.p>
 
 
-                        <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+                        <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl">{subtitle}</p>
                         <Link href={`${currentPath}#products`} className="inline-flex mt-2 items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 ">
-                            Recent Products
+                            {button1}
                             <FaArrowDown className="w-5 h-5 ml-2 -mr-1" />
                         </Link>
                         <Link href="/" className="inline-flex mt-2 items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-gray-100">
-                            Speak to Sales
+                            {button2}
                             <FaHeadphones className="w-5 h-5 ml-2 -mr-1" />
                         </Link>
 

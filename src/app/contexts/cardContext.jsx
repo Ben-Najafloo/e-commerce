@@ -6,6 +6,7 @@ export const CardContext = createContext();
 
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
+    const [lang, setLang] = useState([]);
 
     // set/get localStorage
     useEffect(() => {
@@ -17,6 +18,17 @@ export function CartProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
+
+    // set/get localStorage
+    useEffect(() => {
+        const localLang = JSON.parse(localStorage.getItem("lang"));
+        if (localLang) {
+            setLang(localLang)
+        }
+    }, [])
+    useEffect(() => {
+        localStorage.setItem("lang", JSON.stringify(lang))
+    }, [lang])
 
 
     function addToCart(product) {
@@ -66,7 +78,7 @@ export function CartProvider({ children }) {
     }
 
     return (
-        <CardContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalPay, totalQuantity, clearCart }}>
+        <CardContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalPay, totalQuantity, clearCart, lang, setLang }}>
             {children}
         </CardContext.Provider>
     )

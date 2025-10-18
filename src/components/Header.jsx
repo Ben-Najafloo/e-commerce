@@ -11,6 +11,7 @@ import { PiSignOutBold } from "react-icons/pi";
 import { useSession, signIn, signOut } from 'next-auth/react';
 import './Header.css';
 import { ThemeToggle } from './ThemeToggle';
+import { LangToggle } from './LangToggle';
 
 const Header = () => {
 
@@ -18,13 +19,15 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const { cart } = useContext(CardContext);
+    const { cart, lang } = useContext(CardContext);
 
     const { data: session } = useSession()
     const [isrender, setIsRender] = useState(false);
     useEffect(
         () => setIsRender(true)
         , [])
+
+    const greeting = lang === "en" ? "Hi" : "Ciao";
 
     if (!isrender) {
         return null
@@ -40,18 +43,17 @@ const Header = () => {
                             BEHNAM
                         </Link>
                         <div className='hidden md:flex '>
-                            <Link href="/" className="text-sm/6 ml-20 font-semibold ">All</Link>
-                            <Link href={`?category=electronics#products`} className="text-sm/6 ml-7 font-semibold ">Electronics</Link>
-                            <Link href={`?category=jewelery#products`} className="text-sm/6 ml-7 font-semibold ">Jewelery</Link>
-                            <Link href={`?category=clothing#products`} className="text-sm/6 ml-7 font-semibold ">Clothing</Link>
+                            <Link href="/" className="text-sm/6 ml-20 font-semibold ">{lang === "en" ? "All" : "Tutti"}</Link>
+                            <Link href={`?category=electronics#products`} className="text-sm/6 ml-7 font-semibold ">{lang === "en" ? "Electronics" : "Elettronica"}</Link>
+                            <Link href={`?category=jewelery#products`} className="text-sm/6 ml-7 font-semibold ">{lang === "en" ? "Jewelery" : "Gioielleria"}</Link>
+                            <Link href={`?category=clothing#products`} className="text-sm/6 ml-7 font-semibold ">{lang === "en" ? "Clothing" : "Vestiario"}</Link>
                         </div>
-
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end  items-center">
                         {session ? (
                             <div className='dropdown'>
                                 <div className="dropbtn text-sm/6 font-semibold  cursor-pointer">
-                                    Hi {session.user.name}
+                                    {greeting} {session.user.name}
                                 </div>
                                 <div className="dropdown-content bg-white dark:bg-black">
 
@@ -87,6 +89,9 @@ const Header = () => {
                         <div className="ml-4 hidden md:block">
                             <ThemeToggle />
                         </div>
+                        <div className="ml-2 hidden md:block">
+                            <LangToggle />
+                        </div>
                     </div>
 
                     <div className="flex items-center md:hidden">
@@ -97,6 +102,9 @@ const Header = () => {
                         </Link>
                         <div className="mr-4">
                             <ThemeToggle />
+                        </div>
+                        <div className="mr-2">
+                            <LangToggle />
                         </div>
                         <button onClick={toggleMenu} className=" focus:outline-none">
                             {isOpen ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
