@@ -7,19 +7,21 @@ export const CardContext = createContext();
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
     const [lang, setLang] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    // set/get localStorage
+    // set/get localStorage Card
     useEffect(() => {
         const localCart = JSON.parse(localStorage.getItem("cart"));
         if (localCart) {
             setCart(localCart)
         }
+        setIsLoaded(true);
     }, [])
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
 
-    // set/get localStorage
+    // set/get localStorage Language
     useEffect(() => {
         const localLang = JSON.parse(localStorage.getItem("lang"));
         if (localLang) {
@@ -75,6 +77,10 @@ export function CartProvider({ children }) {
 
     function clearCart() {
         setCart([])
+    }
+
+    if (!isLoaded) {
+        return null; // or a loading spinner
     }
 
     return (
