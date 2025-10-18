@@ -118,16 +118,16 @@ const Header = () => {
                     <nav className="md:hidden shadow-lg">
                         <ul className="flex flex-col space-y-2 px-4 py-4">
                             <li>
-                                <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
+                                <Link href="/" onClick={() => setIsOpen(false)}>{lang === "en" ? "All" : "Tutti"}</Link>
                             </li>
                             <li>
-                                <Link href={`?category=electronics#products`} onClick={() => setIsOpen(false)}>Electronics</Link>
+                                <Link href={`?category=electronics#products`} onClick={() => setIsOpen(false)}>{lang === "en" ? "Electronics" : "Elettronica"}</Link>
                             </li>
                             <li>
-                                <Link href={`?category=jewelery#products`} onClick={() => setIsOpen(false)}>Jewelery</Link>
+                                <Link href={`?category=jewelery#products`} onClick={() => setIsOpen(false)}>{lang === "en" ? "Jewelery" : "Gioielleria"}</Link>
                             </li>
                             <li>
-                                <Link href={`?category=clothing#products`} onClick={() => setIsOpen(false)}>Clothing</Link>
+                                <Link href={`?category=clothing#products`} onClick={() => setIsOpen(false)}>{lang === "en" ? "Clothing" : "Vestiario"}</Link>
                             </li>
                             <li className="border-t border-white mt-2 pt-2">
                                 {session ? (
